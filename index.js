@@ -10,7 +10,9 @@ const upload = multer({ dest: 'uploads/' });
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://linkgraph2021.github.io'  // your GitHub Pages URL
+}));
 app.use(express.json());
 
 app.post('/generate-report', upload.any(), async (req, res) => {
